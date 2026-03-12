@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/js/fLogin.js" defer></script>
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="login-container">
+    <!-- Logo placeholder -->
+    <div class="logo">
+      <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo">
+    </div>
+
+    <!-- Login box -->
+    <div class="login-box">
+    <h2>{{title}}</h2>
+    <form id="loginForm" method="POST" action="/login">
+        <label for="full_name">First Name</label>
+        <input type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+
+        <label for="password">Last Name</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+        <button type="submit">Login</button>
+</form>
+</body>
+</html>
