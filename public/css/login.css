@@ -17,7 +17,8 @@ body {
 }
 
 /* Container */
-.login-container {
+.login-container,
+.register-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +32,8 @@ body {
 }
 
 /* Login box */
-.login-box {
+.login-box,
+.register-box {
   background: #ffffff;
   padding: 40px 30px;
   border-radius: 16px;
@@ -41,7 +43,8 @@ body {
   animation: fadeIn 0.8s ease-in-out;
 }
 
-.login-box h2 {
+.login-box h2,
+.register-box h2 {
   margin-bottom: 25px;
   color: #003E4A; /* Chick-fil-A red */
   font-size: 22px;

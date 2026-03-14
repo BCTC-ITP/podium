@@ -7,6 +7,7 @@ const SupabaseSessionStore = require('./config/SupabaseSessionStore');
 const supabase = require('./config/supabase');
 
 const indexRouter = require('./routes/index');
+const registerRouter = require('./routes/bRegister');
 
 app.set('trust proxy', 1);
 
@@ -32,6 +33,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use('/', indexRouter);
+app.use('/register', registerRouter);
 
 app.listen(3000, () => {
     console.log(`Server running at http://localhost:3000`);
