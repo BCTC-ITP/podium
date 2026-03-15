@@ -4,7 +4,7 @@ const usersDB = {
      async register(full_name, password) {
         const {data, error} = await supabase
             .from('users')
-            .insert({full_name: full_name, password: password, is_authenticated: false, is_admin: false})
+            .insert({full_name: full_name, password: password, is_auth: false, is_admin: false})
             .select()
             .single();
             if (error) throw error;
