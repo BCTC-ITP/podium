@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In Sheet</title>
+    <link rel="stylesheet" href="/css/signin.css">
+    <link rel="icon" type="image/x-icon" href="/logo/bctc-logo.ico">
+    <script src="/js/fSignin.js" defer></script>
+</head>
+<body>
+    <header class="fade-in fade-delay-1">
+        <div class="header-content">
+           <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo">
+            <h1>Sign In Sheet</h1>
+        </div>
+    </header>
+    <nav class="fade-in fade-delay-2">
+        <ul>
+            <li><a href="../checkOut/" class="nav-item">Check Out</a></li>
+        </ul>
+    </nav>
+
+    <main class="fade-in fade-delay-3">
+        <section class="id-section">
+            <h2>Insert ID</h2>
+            <div class="button-group">
+                <button id="scan-btn" class="styled-btn">Scan ID</button>
+                <button id="type-btn" class="styled-btn">Type ID</button>
+            </div>
+            <input type="text" id="id-input" placeholder="Enter or Scan your ID" disabled>
+        </section>
+
+        <section class="info-section fade-in fade-delay-4">
+            <p>If you have trouble scanning, please see your instructor or visit the self proclaimed Podium Master.</p>
+            <p>Need help? <a href="#">Click here</a> for support.</p>
+        </section>
+    </main>
+
+    <footer class="fade-in fade-delay-4">
+        <p>&copy; 2025 Berks Career & Technology Center | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

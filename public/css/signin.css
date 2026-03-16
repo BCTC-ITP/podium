@@ -1,0 +1,207 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #F5F5F5 0%, #E0F7FA 100%); 
+    color: #333333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* keeps footer at bottom if you have one */
+    padding-top: 260px; /* enough space for header + nav */
+}
+/* Header */
+header {
+    background-color: #FFFFFF; /* white */
+    padding: 30px 40px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1); /* subtle shadow */
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 140px;
+}
+
+/* Adjusts Logo */
+h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #003E4A; /* dark teal for contrast */
+    margin: 0;
+}
+
+/* BCTC-Logo*/
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 220px; /* bigger size */
+    height: auto;
+}
+
+
+/* Nav bar */
+nav {
+    background-color: #003E4A; /* your teal color */
+    position: fixed;
+    top: 200px; /* adjust as needed below header */
+    width: 100%;  /* full width */
+    left: 0;
+    transform: none; /* reset */
+    z-index: 999;
+    padding: 10px 0; /* vertical padding only */
+    border-radius: 0 0 50px 50px; /* round only bottom corners for a pill effect */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Nav list styling */
+nav ul {
+    list-style: none;
+    padding: 0 40px;
+    margin: 0;
+    display: flex;
+    justify-content: center; /* Center the nav items */
+    align-items: center;
+}
+/* Each nav item */
+
+nav li {
+    margin: 0 50px; /* More spacing between nav options */
+}
+
+.nav-item {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-block;
+}
+
+.nav-item:hover {
+    background-color: #FFD700; /* gold */
+    color: #003E4A; /* dark teal */
+    font-size: 20px;
+}
+.id-section {
+    background-color: #FFFFFF;
+    width: 60%;
+    margin: 40px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centers all inline/inline-block elements */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers all child elements horizontally */
+}
+/* Section Headings */
+h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #003E4A;
+}
+
+/* Buttons */
+.styled-btn {
+    padding: 12px 20px;
+    margin: 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border: none;
+    border-radius: 8px;
+    background-color: #FFD700;
+    color: #003E4A;
+    transition: 0.3s ease-in-out;
+}
+
+.styled-btn:hover {
+    background-color: #e6c200;
+}
+
+/* Input Box */
+#id-input {
+    width: 250px;
+    padding: 12px;
+    margin-top: 20px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Info Section (NEW) */
+.info-section {
+    margin-top: 20px;
+    text-align: center;
+    color: #003E4A;
+    font-size: 16px;
+    padding: 20px;
+    background-color: #E0F7FA;
+    border-radius: 10px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.info-section a {
+    color: #007B8A;
+    text-decoration: underline;
+}
+
+/* Footer (NEW) */
+footer {
+    background-color: #003E4A;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+}
+
+/* Fade-in animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation class */
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+/* Delays for staggering */
+.fade-delay-1 {
+    animation-delay: 0.2s;
+}
+.fade-delay-2 {
+    animation-delay: 0.4s;
+}
+.fade-delay-3 {
+    animation-delay: 0.6s;
+}
+.fade-delay-4 {
+    animation-delay: 0.8s;
+}
+
