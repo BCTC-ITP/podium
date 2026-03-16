@@ -16,7 +16,6 @@ scanBtn.addEventListener("click", () => {
     idInput.placeholder = "Scan your ID";
     idInput.type = "text";
     idInput.disabled = false;
-    idInput.focus();
     scanned = true;
     scanInput = "";
     lastKeyTime = 0;
@@ -29,7 +28,6 @@ typeBtn.addEventListener("click", () => {
     idInput.placeholder = "Enter your 9-digit ID";
     idInput.type = "number";
     idInput.disabled = false;
-    idInput.focus();
     scanned = false;
     typeBtn.disabled = true;
     scanBtn.disabled = false;
@@ -66,8 +64,7 @@ idInput.addEventListener("keydown", (e) => {
     if (scanTimer) clearTimeout(scanTimer);
     scanTimer = setTimeout(() => {
         if (scanInput.length === 9) {
-            alert(`Your ID is: ${scanInput}`);
-            updateAttendance(scanInput, scanned);
+            signout(scanInput);
             scanInput = "";
             idInput.value = ""; // Clear the input
         } else {
@@ -91,8 +88,7 @@ idInput.addEventListener("input", () => {
         }
 
         if (idInput.value.length === 9) {
-            alert(`Your ID is: ${idInput.value}`);
-            updateAttendance(idInput.value, scanned);
+            signout(idInput.value);
         }
     } else {
         // Scan mode — clear any text that accidentally got in
@@ -100,22 +96,19 @@ idInput.addEventListener("input", () => {
     }
 });
 
-async function updateAttendance(studentId, scanned) {
 
-    const response = await fetch('/signin', {
+// Send ID to PHP
+async function signout(studentId) {
+
+   const data = await fetch('/checkout', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            id: studentId,
-            scanned: scanned
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: studentId })
     });
-    const data = await response.json();
-    if (data.success) {
-        console.log(`Attendance updated for ID ${studentId}`);
+    const result = await data.json();
+    if (result.success) {
+        window.location.href = `/dashboard/${studentId}`;
     } else {
-        console.error(`Error: ${data.message}`);
+        alert(result.message);
     }
 }

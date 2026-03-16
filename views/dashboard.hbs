@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard | BCTC</title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="icon" type="image/x-icon" href="/photos/bctc-logo.ico">
+  <script src="/js/fDashboard.js" defer></script>
+  <style>
+      .button-panel button.active-btn {
+          background-color: #007BFF;
+          color: white;
+      }
+  </style>
+</head>
+<body class="fade-in">
+
+  <header class="topbar">
+    <div class="logo-wrap">
+<img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo">
+      <span class="site-title">Berks Career & Technology Center</span>
+    </div>
+  </header>
+
+  <main class="dashboard-container">
+    <p class="welcome" id="welcomeMessage">
+        Welcome, {{student.fname}}!
+    </p>
+
+    <section class="user-card">
+      <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo">
+      <div class="user-info">
+        <h2 id="userName">{{student.fname}} {{student.lname}}</h2>
+      </div>
+    </section>
+
+    <section class="button-panel">
+      <div id="timer-display" style="display: none; margin-bottom: 20px; font-size: 1.1em; font-weight: bold; text-align: center; line-height: 1.6;"></div>
+    </section>
+
+    <section class="button-panel">
+      <button id="bathroomBtn">Bathroom</button>
+      <button id="nurseBtn">Nurse</button>
+      <button id="officeBtn">Office</button>
+      <button id="otherBtn">Other</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    &copy; 2025 Berks Career & Technology Center. All Rights Reserved.
+  </footer>
+
+</body>
+</html>

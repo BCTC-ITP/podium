@@ -9,6 +9,8 @@ const supabase = require('./config/supabase');
 const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/bRegister');
 const signinRouter = require('./routes/bSignin');
+const checkoutRouter = require('./routes/bCheckout');
+const dashboardRouter = require('./routes/bDashboard');
 
 app.set('trust proxy', 1);
 
@@ -36,6 +38,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
+app.use('/checkout', checkoutRouter);
+app.use('/dashboard', dashboardRouter);
 
 app.listen(3000, () => {
     console.log(`Server running at http://localhost:3000`);

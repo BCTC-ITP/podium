@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const {usersDB} = require('../database/db.js');
+const {usersDB, studentsDB} = require('../database/db.js');
 
 router.get('/', async function(req, res, next) {
     try {
@@ -22,6 +22,29 @@ router.get('/', async function(req, res, next) {
     } catch (error) {
         console.error('Error during sign-in:', error);
         res.status(500).json({ error: 'An error occurred during sign-in' });
+    }
+});
+
+router.post('/', async function(req, res, next) {
+    try {
+        const { id, scanned } = req.body;
+        if (!id || typeof id !== 'string' || id.length !== 9) {
+            return res.status(400).json({ success: false, message: 'Invalid ID format' });
+        } else {
+            if (scanned) {
+
+                if(scanned !== true) {
+                    await studentsDB.updateAttendance(id, 0);
+                } else {
+                    await studentsDB.updateAttendance(id, 1);
+                }
+
+                return res.status(200).json({ success: true, message: 'Attendance updated successfully' });
+            }
+        }
+    } catch (error) {
+        console.error('Error updating attendance:', error);
+        return res.status(500).json({ success: false, message: 'An error occurred while updating attendance' });
     }
 });
 

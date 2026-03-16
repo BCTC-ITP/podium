@@ -1,0 +1,163 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Colors */
+:root {
+  --main: #003E4A;
+  --gold: #d4af37;
+  --light-gray: #f4f4f4;
+  --white: #ffffff;
+  --hover-gold: #c59d2a;
+}
+
+/* Body and Fade */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light-gray);
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  animation: fadeIn 0.8s ease;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+/* Header */
+.topbar {
+  background-color: var(--main);
+  color: var(--white);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 60px;
+  margin-right: 15px;
+}
+
+.site-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Welcome */
+.welcome {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-top: 20px;
+  color: var(--main);
+}
+
+/* Main Layout */
+.dashboard-container {
+  flex: 1;
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 30px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* User Info */
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  padding: 10px 0;
+}
+
+.user-img {
+  height: 100px;
+  width: 100px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 2px solid var(--main);
+}
+
+.user-info h2 {
+  font-size: 1.5rem;
+  color: var(--main);
+}
+
+.user-info p {
+  font-size: 1rem;
+}
+
+/* Buttons */
+.button-panel {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.button-panel button {
+  background-color: var(--gold);
+  color: var(--main);
+  font-size: 1.1rem;
+  padding: 16px 36px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  min-width: 200px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button-panel button:hover {
+  background-color: var(--hover-gold);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: var(--main);
+  color: var(--white);
+  font-size: 14px;
+  margin-top: auto;
+}
+.button-panel button {
+    background-color: #003E4A;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.button-panel button:hover {
+    background-color: #0056b3;
+}
+
+.button-panel button.active-btn {
+    background-color: #007BFF; /* dark blue to indicate active */
+    color: #ffffff;
+}
