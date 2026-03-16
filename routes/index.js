@@ -1,6 +1,6 @@
 const express = require('express');
 var router = express.Router();
-
+const { usersDB } = require('../database/db.js');
 router.get('/', function(req,res,next) {
 
     if(req.session && req.session.username)

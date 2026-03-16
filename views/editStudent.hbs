@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add BCTC Student</title>
+    <link rel="stylesheet" href="/css/editStudent.css">
+    <script src="/js/fEditStudent.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="../logo/bctc-logo.ico">
+</head>
+<body>
+    
+    <header class="fade-in fade-delay-1">
+        <div class="header-content">
+            <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo" onclick="window.location.href='/adminDashboard'">
+            <h1>Edit Students Sheet</h1>
+        </div>
+    </header>
+        <div id="students-tab">
+        <div id="students-header">
+            <h2>Students</h2>
+            <button id="btnAddStudent" aria-label="Add a new Student"> Add Student</button>
+        </div>
+
+        <ul id="students-list">
+            {{#if students.length}}
+                {{#each students}}
+                <li class="students-item" data-id="{{id}}" data-first-name="{{fname}}" data-last-name="{{lname}}" data-session="{{sess}}">
+                    <div class="student-header">
+                        <div class="student-id">
+                            <div class="student-info">
+                                <strong class="student-name">{{fname}} {{lname}}</strong>
+                                <span class="student-meta">
+                                    <span class="student-id">id: {{id}}</span>
+                                    <span class="student-session">Session: {{sess}}</span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="student-actions">
+                            <button class="btn-student-action btnEditStudent" aria-label="Edit {{fname}} {{lname}}">Edit</button>
+                            <button class="btn-student-action btnDeleteStudent" aria-label="Delete {{fname}} {{lname}}">Delete</button>
+                        </div>
+                    </div>
+                </li>
+                {{/each}}
+            {{else}}
+                <li id="no-students-msg">No students yet.</li>
+            {{/if}}
+        </ul>
+    </div>
+    <footer class="fade-in fade-delay-4">
+        <p>&copy; 2025 Berks Career & Technology Center | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

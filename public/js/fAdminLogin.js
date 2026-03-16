@@ -5,21 +5,20 @@ if (loginForm)
     loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const fullname = document.getElementById('full_name').value;
         const password = document.getElementById('password').value;
 
-        if(!fullname || !password)
+        if(!password)
         {
-            alert('Full name and Password must be filled out!');
+            alert('Password must be filled out!');
             return;
         } else {
             try {
-                const response = await fetch('/', {
+                const response = await fetch('/adminLogin', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({fullname, password})
+                    body: JSON.stringify({password})
                 });
 
                 const data = await response.json();
@@ -27,7 +26,7 @@ if (loginForm)
                 if(data?.success)
                 {
                     console.log('Login Successful!');
-                    window.location.href = '/signin';
+                    window.location.href = '/adminDashboard';
                 } else {
                     console.error('Login Failed!: ', data?.message);
                     alert(data?.message || 'Login Failed. Please Try Again.');

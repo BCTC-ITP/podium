@@ -11,6 +11,9 @@ const registerRouter = require('./routes/bRegister');
 const signinRouter = require('./routes/bSignin');
 const checkoutRouter = require('./routes/bCheckout');
 const dashboardRouter = require('./routes/bDashboard');
+const adminLoginRouter = require('./routes/bAdminLogin.js');
+const adminDashboardRouter = require('./routes/bAdminDashboard.js');
+const editStudentRouter = require('./routes/bEditStudent.js');
 
 app.set('trust proxy', 1);
 
@@ -30,8 +33,8 @@ app.use(session({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -40,6 +43,9 @@ app.use('/register', registerRouter);
 app.use('/signin', signinRouter);
 app.use('/checkout', checkoutRouter);
 app.use('/dashboard', dashboardRouter);
+app.use('/adminLogin', adminLoginRouter);
+app.use('/adminDashboard', adminDashboardRouter);
+app.use('/editStudent', editStudentRouter);
 
 app.listen(3000, () => {
     console.log(`Server running at http://localhost:3000`);

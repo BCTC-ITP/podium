@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance Dashboard</title>
+  <link rel="stylesheet" href="/css/adminDashboard.css" />
+  <script src="/js/fAdminDashboard.js" defer></script>
+  <link rel="icon" type="image/x-icon" href="../logo/bctc-logo.ico">
+</head>
+<body class="fade-in">
+
+<header class="admin-header">
+<img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo">
+    <div class="admin-info">
+    <h2>Welcome, Mrs. Paulson</h2>
+    <p>Staff Portal - Attendance & Oversight</p>
+    </div>
+</header>
+
+<main class="options-container">
+    <button onclick="window.location.href='/attendance'">Check Today's Attendance</button>
+    <button onclick="window.location.href='signoutLog'">Check Signout Log</button>
+    <button onclick="window.location.href='attendanceHistory'">Check Attendance Log</button>
+    <button onclick="window.location.href='editStudent'">Edit Students</button>
+    <!-- Return to Sign In using existing return-button style -->
+    <a href="/signin/" class="return-button">← Go to Sign In</a>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 BCTC Attendance System</p>
+</footer>
+
+</body>
+</html>

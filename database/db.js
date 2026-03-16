@@ -102,6 +102,17 @@ const studentsDB = {
         .single();
         if (error) throw error;
         return data || null;
+    },
+
+    async getAllStudents()
+    {
+        const { data, error } = await supabase
+        .from('students')
+        .select('*')
+        .order('fname', {ascending: true});
+
+        if(error) throw error;
+        return data || null;
     }
 
 }

@@ -1,0 +1,83 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  background-color: #f8f9fa;
+  color: #003E4A;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.admin-header {
+  display: flex;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #003E4A;
+  color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo {
+  width: 80px;
+  margin-right: 20px;
+}
+
+.admin-info h2 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 60px 20px;
+  gap: 20px;
+}
+
+.options-container button {
+  padding: 15px 30px;
+  font-size: 18px;
+  border: none;
+  background-color: #005b66;
+  color: white;
+  border-radius: 8px;
+  width: 250px;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.options-container button:hover {
+  background-color: #00717e;
+  transform: scale(1.03);
+  cursor: pointer;
+}
+
+.footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 15px;
+  background-color: #e6e6e6;
+  color: #333;
+}
+
+.return-button {
+  display: inline-block;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  font-weight: bold;
+}
+
+.return-button:hover {
+  background-color: #0056b3;
+}
