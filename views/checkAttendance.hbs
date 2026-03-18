@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Attendance</title>
+    <link rel="stylesheet" href="/css/checkAttendance.css">
+    <script src="/js/fCheckAttendance.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="../logo/bctc-logo.ico">
+</head>
+<body>
+    <header class="fade-in fade-delay-1">
+        <div class="header-content">
+            <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo" onclick="window.location.href='/adminDashboard'">
+            <h1>Attendance Records</h1>
+        </div>
+    </header>
+
+    <main class="fade-in fade-delay-2">
+        <section class="attendance-section">
+            <h2>Today's Attendance</h2>
+
+            <!-- Session Filter -->
+            <div class="session-buttons">
+                <a href="/checkAttendance?sesh=all" class="session-btn" data-session="all">All Sessions</a>
+                <a href="/checkAttendance?sesh=AM" class="session-btn" data-session="AM">AM Session</a>
+                <a href="/checkAttendance?sesh=PM" class="session-btn" data-session="PM">PM Session</a>
+            </div>
+
+            <!-- Search -->
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search by First or Last Name...">
+            </div>
+
+            <!-- Attendance Table -->
+            <table id="attendanceTable" class="styled-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Session</th>
+                        <th>Attendance</th>
+                        <th>Scanned</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if students.length}}
+                        {{#each students}}
+                        <tr class="{{#if this.attendance}}present{{else}}absent{{/if}}" data-name="{{this.fname}} {{this.lname}}">
+                            <td>{{this.id}}</td>
+                            <td>{{this.fname}}</td>
+                            <td>{{this.lname}}</td>
+                            <td>{{this.sess}}</td>
+                            <td class="attendance-status">{{#if this.attendance}}✓ Present{{else}}✗ Absent{{/if}}</td>
+                            <td class="scanned-status {{#if this.scanned}}scanned{{else}}typed{{/if}}">
+                                {{#if this.scanned}}Scanned{{else}}Typed{{/if}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    {{else}}
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: #999;">No students in this session</td>
+                        </tr>
+                    {{/if}}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="fade-in fade-delay-4">
+        <p>&copy; 2025 Berks Career & Technology Center | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

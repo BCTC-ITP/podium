@@ -30,18 +30,24 @@ router.post('/', async function(req, res, next) {
         const { id, scanned } = req.body;
         if (!id || typeof id !== 'string' || id.length !== 9) {
             return res.status(400).json({ success: false, message: 'Invalid ID format' });
-        } else {
-            if (scanned) {
-
-                if(scanned !== true) {
-                    await studentsDB.updateAttendance(id, 0);
-                } else {
-                    await studentsDB.updateAttendance(id, 1);
-                }
-
-                return res.status(200).json({ success: true, message: 'Attendance updated successfully' });
-            }
         }
+
+        // Check if student already has attendance filed
+        const student = await studentsDB.getStudentsById(id);
+        
+        if (!student) {
+            return res.status(404).json({ success: false, message: 'Student not found' });
+        }
+
+        if (student.attendance === 1) {
+            return res.status(400).json({ success: false, message: 'Your attendance is already filed' });
+        }
+
+        // Update attendance to 1 (present) and scanned to 1 (scanned) or 0 (typed)
+        const scannedStatus = scanned ? 1 : 0;
+        await studentsDB.updateAttendance(id, 1, scannedStatus);
+
+        return res.status(200).json({ success: true, message: 'Attendance updated successfully' });
     } catch (error) {
         console.error('Error updating attendance:', error);
         return res.status(500).json({ success: false, message: 'An error occurred while updating attendance' });

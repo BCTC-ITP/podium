@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Sign-Out Log</title>
+    <link rel="stylesheet" href="/css/checkSignout.css">
+    <script src="/js/fCheckSignout.js" defer></script>
+    <link rel="icon" type="image/x-icon" href="../logo/bctc-logo.ico">
+</head>
+<body>
+    <header class="fade-in fade-delay-1">
+        <div class="header-content">
+            <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo" onclick="window.location.href='/adminDashboard'">
+            <h1>Sign-Out Log</h1>
+        </div>
+    </header>
+
+    <main class="fade-in fade-delay-2">
+        <section class="signout-section">
+            <h2>Check-Out Records for <span id="dateDisplay">{{selectedDate}}</span></h2>
+
+            <!-- Session Filter -->
+            <div class="session-buttons">
+                <a href="/checkSignout?sesh=all&date={{selectedDate}}" class="session-btn" data-session="all">All Sessions</a>
+                <a href="/checkSignout?sesh=AM&date={{selectedDate}}" class="session-btn" data-session="AM">AM Session</a>
+                <a href="/checkSignout?sesh=PM&date={{selectedDate}}" class="session-btn" data-session="PM">PM Session</a>
+            </div>
+
+            <!-- Date and Search Controls -->
+            <div class="controls-container">
+                <input type="date" id="dateInput" value="{{selectedDate}}">
+                <input type="text" id="nameSearch" placeholder="Search by First or Last Name...">
+            </div>
+
+            <!-- Signout Table -->
+            <table id="checkoutTable" class="styled-table">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Check Out</th>
+                        <th>Check In</th>
+                        <th>Destination</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if checkouts.length}}
+                        {{#each checkouts}}
+                        <tr data-name="{{this.fname}} {{this.lname}}">
+                            <td>{{this.fname}}</td>
+                            <td>{{this.lname}}</td>
+                            <td>{{this.check_out}}</td>
+                            <td>{{this.check_in}}</td>
+                            <td>{{this.destination}}</td>
+                        </tr>
+                        {{/each}}
+                    {{else}}
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: #999;">No check-out records for this date and session</td>
+                        </tr>
+                    {{/if}}
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="fade-in fade-delay-4">
+        <p>&copy; 2025 Berks Career & Technology Center | All Rights Reserved</p>
+    </footer>
+</body>
+</html>

@@ -22,6 +22,20 @@
             <button id="btnAddStudent" aria-label="Add a new Student"> Add Student</button>
         </div>
 
+        <div id="filter-controls">
+            <div class="filter-group">
+                <input type="text" id="searchInput" placeholder="Search by name or ID..." class="search-box">
+            </div>
+            <div class="filter-group">
+                <label>Filter by Session:</label>
+                <div class="filter-buttons">
+                    <button id="filterAll" class="filter-btn active" data-filter="all">All</button>
+                    <button id="filterAM" class="filter-btn" data-filter="AM">AM</button>
+                    <button id="filterPM" class="filter-btn" data-filter="PM">PM</button>
+                </div>
+            </div>
+        </div>
+
         <ul id="students-list">
             {{#if students.length}}
                 {{#each students}}

@@ -19,7 +19,7 @@ router.post('/', async function(req, res, next) {
             return res.json({success: false, message: 'Make sure to enter a valid password'});
         } else {
         
-            req.session.isAdmin = true;
+            req.session.adminPassword = true;
 
             return res.json({success: true, message: 'Authenticated Successfully.'});
         }

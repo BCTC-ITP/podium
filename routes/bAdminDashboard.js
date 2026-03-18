@@ -11,6 +11,8 @@ router.get('/', function(req,res,next) {
         return res.render('adminDashboard', {
             title: 'Admin Dashboard'
         });
+    } else {
+        return res.redirect('/adminLogin');
     }
    
 });

@@ -6,6 +6,13 @@ const session = require('express-session');
 const SupabaseSessionStore = require('./config/SupabaseSessionStore');
 const supabase = require('./config/supabase');
 
+// Debug: Log environment variables on startup
+console.log('🔍 Environment Variables Status:');
+console.log('   SUPABASE_URL:', process.env.SUPABASE_URL ? '✓ Loaded' : '✗ Missing');
+console.log('   SUPABASE_ANON_KEY:', process.env.SUPABASE_ANON_KEY ? '✓ Loaded' : '✗ Missing');
+console.log('   SESSION_SECRET:', process.env.SESSION_SECRET ? '✓ Loaded' : '✗ Missing');
+console.log('   ADMIN_PASSWORD:', process.env.ADMIN_PASSWORD ? '✓ Loaded' : '✗ Missing');
+
 const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/bRegister');
 const signinRouter = require('./routes/bSignin');
@@ -14,6 +21,9 @@ const dashboardRouter = require('./routes/bDashboard');
 const adminLoginRouter = require('./routes/bAdminLogin.js');
 const adminDashboardRouter = require('./routes/bAdminDashboard.js');
 const editStudentRouter = require('./routes/bEditStudent.js');
+const manageStudentsRouter = require('./routes/bManageStudents.js');
+const checkAttendanceRouter = require('./routes/bCheckAttendance.js');
+const checkSignoutRouter = require('./routes/bCheckSignout.js');
 
 app.set('trust proxy', 1);
 
@@ -46,7 +56,11 @@ app.use('/dashboard', dashboardRouter);
 app.use('/adminLogin', adminLoginRouter);
 app.use('/adminDashboard', adminDashboardRouter);
 app.use('/editStudent', editStudentRouter);
+app.use('/managestudents', manageStudentsRouter);
+app.use('/checkAttendance', checkAttendanceRouter);
+app.use('/checkSignout', checkSignoutRouter);
 
 app.listen(3000, () => {
-    console.log(`Server running at http://localhost:3000`);
+    console.log(`\n✅ Server running at http://localhost:3000`);
+    console.log('   Ready to accept connections\n');
 });

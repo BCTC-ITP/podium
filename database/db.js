@@ -92,11 +92,14 @@ const studentsDB = {
         return data || null;
     },
 
-    async updateAttendance(studentId, status)
+    async updateAttendance(studentId, attendanceStatus, scannedStatus)
     {
         const {data, error} = await supabase
         .from('students')
-        .update({ attendance_status: status })
+        .update({ 
+            attendance: attendanceStatus,
+            scanned: scannedStatus 
+        })
         .eq('id', studentId)
         .select()
         .single();
@@ -113,6 +116,42 @@ const studentsDB = {
 
         if(error) throw error;
         return data || null;
+    },
+
+    async addStudent(id, fname, lname, sess)
+    {
+        const { data, error } = await supabase
+        .from('students')
+        .insert({ id: id, fname: fname, lname: lname, sess: sess })
+        .select()
+        .single();
+
+        if(error) throw error;
+        return data || null;
+    },
+
+    async editStudent(id, fname, lname, sess)
+    {
+        const { data, error } = await supabase
+        .from('students')
+        .update({ fname: fname, lname: lname, sess: sess })
+        .eq('id', id)
+        .select()
+        .single();
+
+        if(error) throw error;
+        return data || null;
+    },
+
+    async deleteStudent(id)
+    {
+        const { error } = await supabase
+        .from('students')
+        .delete()
+        .eq('id', id);
+
+        if(error) throw error;
+        return true;
     }
 
 }
@@ -159,6 +198,90 @@ const checkoutDB = {
         const minutes = String(date.getMinutes()).padStart(2, '0');
         const seconds = String(date.getSeconds()).padStart(2, '0');
         return `${hours}:${minutes}:${seconds}`;
+    },
+
+    async getCheckoutsByDate(date)
+    {
+        try {
+            // Get all checkout records
+            const { data, error } = await supabase
+                .from('checkout_history')
+                .select('*, student_id');
+            
+            if (error) return { data: null, error };
+            
+            // For each checkout record, fetch student info to get session
+            const enrichedData = await Promise.all(
+                data.map(async (record) => {
+                    const { data: student } = await supabase
+                        .from('students')
+                        .select('fname, lname, sess')
+                        .eq('id', record.student_id)
+                        .single();
+
+                    const recordDate = new Date(record.created_at).toISOString().split('T')[0];
+                    
+                    return {
+                        ...record,
+                        fname: student?.fname || '',
+                        lname: student?.lname || '',
+                        sess: student?.sess || '',
+                        date: recordDate
+                    };
+                })
+            );
+
+            // Filter by date only (no session filter)
+            const filteredData = enrichedData.filter(record => {
+                return record.date === date;
+            });
+
+            return { data: filteredData, error: null };
+        } catch (err) {
+            return { data: null, error: err };
+        }
+    },
+
+    async getCheckoutsByDateAndSession(date, session)
+    {
+        try {
+            // Get all checkout records
+            const { data, error } = await supabase
+                .from('checkout_history')
+                .select('*, student_id');
+            
+            if (error) return { data: null, error };
+            
+            // For each checkout record, fetch student info to get session
+            const enrichedData = await Promise.all(
+                data.map(async (record) => {
+                    const { data: student } = await supabase
+                        .from('students')
+                        .select('fname, lname, sess')
+                        .eq('id', record.student_id)
+                        .single();
+
+                    const recordDate = new Date(record.created_at).toISOString().split('T')[0];
+                    
+                    return {
+                        ...record,
+                        fname: student?.fname || '',
+                        lname: student?.lname || '',
+                        sess: student?.sess || '',
+                        date: recordDate
+                    };
+                })
+            );
+
+            // Filter by date and session
+            const filteredData = enrichedData.filter(record => {
+                return record.date === date && record.sess === session;
+            });
+
+            return { data: filteredData, error: null };
+        } catch (err) {
+            return { data: null, error: err };
+        }
     }
 }
 
