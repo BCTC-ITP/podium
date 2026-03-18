@@ -24,6 +24,7 @@ const editStudentRouter = require('./routes/bEditStudent.js');
 const manageStudentsRouter = require('./routes/bManageStudents.js');
 const checkAttendanceRouter = require('./routes/bCheckAttendance.js');
 const checkSignoutRouter = require('./routes/bCheckSignout.js');
+const attendanceHistoryRouter = require('./routes/bAttendanceHistory.js');
 
 app.set('trust proxy', 1);
 
@@ -59,6 +60,7 @@ app.use('/editStudent', editStudentRouter);
 app.use('/managestudents', manageStudentsRouter);
 app.use('/checkAttendance', checkAttendanceRouter);
 app.use('/checkSignout', checkSignoutRouter);
+app.use('/attendanceHistory', attendanceHistoryRouter);
 
 app.listen(3000, () => {
     console.log(`\n✅ Server running at http://localhost:3000`);

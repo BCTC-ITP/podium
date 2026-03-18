@@ -152,6 +152,19 @@ const studentsDB = {
 
         if(error) throw error;
         return true;
+    },
+
+    async getAttendanceHistory(date)
+    {
+        const { data, error } = await supabase
+        .from('attendance_history')
+        .select('*, students(fname, lname, sess)')
+        .gte('created_at', `${date}T00:00:00`)
+        .lt('created_at', `${date}T23:59:59`)
+        .order('created_at', { ascending: true });
+
+        if(error && error.code !== 'PGRST116') throw error;
+        return data || [];
     }
 
 }

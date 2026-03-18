@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attendance History | BCTC</title>
+  <link rel="stylesheet" href="/css/attendanceHistory.css" />
+  <link rel="icon" type="image/x-icon" href="/photos/bctc-logo.ico">
+  <script src="/js/fAttendanceHistory.js" defer></script>
+</head>
+<body class="fade-in">
+
+  <header class="topbar">
+    <div class="logo-wrap">
+      <img src="/photos/bctc-logo.png" alt="Berks Career and Technology Center Logo" class="logo" onclick="window.location.href='/adminDashboard'"  >
+      <span class="site-title">Berks Career & Technology Center</span>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="card">
+      <h2 class="section-title">Attendance History for <span id="currentDate">{{selectedDate}}</span></h2>
+
+      <!-- Search and Date Picker -->
+      <div class="search-panel">
+        <input type="text" id="nameSearch" placeholder="Search by First or Last Name">
+        <input type="date" id="dateSearch" value="{{selectedDate}}">
+      </div>
+
+      <table id="attendanceTable">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Time</th>
+            <th>Attendance</th>
+            <th>Session</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if records}}
+            {{#each records}}
+              <tr>
+                <td>{{this.fname}}</td>
+                <td>{{this.lname}}</td>
+                <td>{{this.time}}</td>
+                <td>{{this.attendance}}</td>
+                <td>{{this.sess}}</td>
+              </tr>
+            {{/each}}
+          {{else}}
+            <tr><td colspan="5" style="text-align:center;">No records found</td></tr>
+          {{/if}}
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+</body>
+</html>
