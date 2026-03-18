@@ -34,7 +34,6 @@ export default async function handler(req, res) {
       attendance: student.attendance || 0,
       scanned: student.scanned || 0,
       session: student.sess,
-      archived_at: new Date().toISOString(),
     }));
 
     // Insert records into attendance history table
