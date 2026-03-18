@@ -39,27 +39,9 @@ export default async function handler(req, res) {
       table += '<th>Session</th>';
       table += '<th>Checked In</th>';
       table += '<th>Scanned</th>';
-      table += '<th>Time In</th>';
       table += '</tr>';
 
       students.forEach((row) => {
-        let timeOnly = '';
-
-        // Time formatting
-        if (row.timein) {
-          const timeObj = new Date(row.timein);
-          timeOnly = timeObj.toLocaleString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-          });
-        }
-
-        // Determine time status
-        if (row.attendance === 0) {
-          timeOnly = 'ABSENT';
-        }
 
         // Row HTML
         table += '<tr>';
@@ -69,7 +51,6 @@ export default async function handler(req, res) {
         table += `<td>${row.sess}</td>`;
         table += `<td>${row.attendance}</td>`;
         table += `<td>${row.scanned}</td>`;
-        table += `<td>${timeOnly}</td>`;
         table += '</tr>';
       });
 
