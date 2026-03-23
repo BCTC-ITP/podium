@@ -3,7 +3,11 @@ const { createClient } = require('@supabase/supabase-js');
 
 module.exports = async function handler(req, res) {
   // Verify request is from Vercel cron
-  if (req.headers.authorization !== `Bearer ${process.env.CRON_SECRET}`) {
+  // Verify request is from Vercel cron
+  const isCron = req.headers['x-vercel-cron'];
+  const isManual = req.headers.authorization === `Bearer ${process.env.CRON_SECRET}`;
+
+  if (!isCron && !isManual) {
     return res.status(401).json({ error: 'Unauthorized' });
   }
 
