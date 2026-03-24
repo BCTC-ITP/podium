@@ -29,7 +29,7 @@ Once logged in, admins can access:
 5. System confirms addition
 
 ### Editing Student Information
-1. Go to "Check Attendance" or "Manage Students"
+1. Go to "Manage Students"
 2. Find the student you want to edit
 3. Click "Edit" button
 4. Update information:
@@ -109,7 +109,7 @@ The admin dashboard displays:
 ### User Accounts
 Admins can manage both student and staff accounts:
 - **Create accounts** for new users
-- **Deactivate accounts** for departing students
+- **Delete accounts** for deleting students
 - **Reset passwords** if requested
 - **Update user information** as needed
 
@@ -157,7 +157,7 @@ Admin accounts have full system access:
 
 ## Troubleshooting
 
-### Student Can't Login
+### Student Can't Signin
 1. Verify student account exists in "Manage Students"
 2. Check full name matches exactly (case-sensitive)
 3. Verify password is correct
