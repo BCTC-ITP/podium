@@ -30,8 +30,8 @@ module.exports = async function handler(req, res) {
       table += '<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse; width: 100%;">';
       table += '<tr>';
       table += '<th>ID</th>';
-      table += '<th>First NPMe</th>';
-      table += '<th>Last NPMe</th>';
+      table += '<th>First Name</th>';
+      table += '<th>Last Name</th>';
       table += '<th>Session</th>';
       table += '<th>Checked In</th>';
       table += '<th>Scanned</th>';
@@ -42,8 +42,8 @@ module.exports = async function handler(req, res) {
         // Row HTML
         table += '<tr>';
         table += `<td>${row.id}</td>`;
-        table += `<td>${row.fnPMe}</td>`;
-        table += `<td>${row.lnPMe}</td>`;
+        table += `<td>${row.fname}</td>`;
+        table += `<td>${row.lname}</td>`;
         table += `<td>${row.sess}</td>`;
         table += `<td>${row.attendance}</td>`;
         table += `<td>${row.scanned}</td>`;

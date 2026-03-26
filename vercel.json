@@ -2,19 +2,24 @@
   "crons": [
     {
       "path": "/api/send-email",
-      "schedule": "0 13 * * *"
+      "schedule": "0 13 * * *",
+      "timezone": "America/New_York"
     },
     {
       "path": "/api/send-email-morning",
-      "schedule": "30 8 * * *"
+      "schedule": "30 8 * * *",
+      "timezone": "America/New_York"
+      
     },
     {
       "path": "/api/archive-attendance",
-      "schedule": "59 14 * * 1-5"
+      "schedule": "59 14 * * 1-5",
+      "timezone": "America/New_York"
     },
     {
       "path": "/api/reset-daily-attendance",
-      "schedule": "0 15 * * 1-5"
+      "schedule": "0 15 * * 1-5",
+      "timezone": "America/New_York"
     }
   ]
 }
