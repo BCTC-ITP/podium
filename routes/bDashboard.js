@@ -41,8 +41,6 @@ router.post('/checkout', async function(req, res, next) {
 
         const studentId = req.session.studentId;
         const currentTime = checkoutDB.formatTime(new Date());
-        alert(currentTime);
-        console.log(currentTime);
         // Insert check-out record (student leaving classroom)
         const data = await checkoutDB.recordCheckout(studentId, destination, currentTime);
 
