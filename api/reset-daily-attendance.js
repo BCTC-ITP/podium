@@ -16,8 +16,8 @@ module.exports = async function handler(req, res) {
         attendance: 0,
         scanned: 0,
       })
-      .neq('id', null); // Update all records
-
+      .not('id', 'is', null) // ✅ valid WHERE clause
+      .select();
     if (error) {
       throw error;
     }
