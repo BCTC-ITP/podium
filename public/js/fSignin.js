@@ -44,7 +44,7 @@ idInput.addEventListener("keydown", (e) => {
     if (lastKeyTime && currentTime - lastKeyTime > maxKeyInterval) {
         // Too slow between keystrokes → likely manual typing
         scanInput = ""; // Reset
-        console.warn("Typing too slow. Ignoring as scan.");
+        console.warn(new Date().toString() + " : Typing too slow. Ignoring as scan.");
     }
 
     lastKeyTime = currentTime;
@@ -71,7 +71,7 @@ idInput.addEventListener("keydown", (e) => {
             scanInput = "";
             idInput.value = ""; // Clear the input
         } else {
-            console.warn("Incomplete scan ignored.");
+            console.warn(new Date().toString() + " : Incomplete scan ignored.");
             scanInput = "";
             idInput.value = "";
         }
@@ -116,6 +116,6 @@ async function updateAttendance(studentId, scanned) {
     if (data.success) {
         console.log(`Attendance updated for ID ${studentId}`);
     } else {
-        console.error(`Error: ${data.message}`);
+        console.error(new Date().toString() + ` Error: ${data.message}`);
     }
 }
