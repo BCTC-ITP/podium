@@ -66,17 +66,3 @@ app.listen(3000, () => {
     console.log(`\n✅ Server running at http://localhost:3000`);
     console.log('   Ready to accept connections\n');
 });
-
-var testfunc = async ()=>{
-    const response = await fetch('/', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            text: "test"
-        })
-    });
-    const data = await response.json();
-}
-testfunc();
